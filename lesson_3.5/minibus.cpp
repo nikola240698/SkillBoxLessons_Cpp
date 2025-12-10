@@ -1,9 +1,7 @@
 #include <iostream>
 
-
 int main() {
-    
-
+ 
     int ticketPrice = 20;
     int passengersNumer = 0;
     int passengersComeIn = 0;
@@ -99,6 +97,5 @@ int main() {
     std::cout << "налоги: " << taxes << " руб." << std::endl;
     std::cout << "Расходы на ремонт машины: " << careRepairCost << " руб." << std::endl;
     std::cout << "Итого доход: " << dailyIncome << " руб." << std::endl;
-
 
 }
