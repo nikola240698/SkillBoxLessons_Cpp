@@ -12,9 +12,9 @@ int main() {
 
     std::cout << "Вы ввели а=" << a << " и b=" << b << std::endl;
 
-    a = a + b;
+    a += b;
     b = a-b;
-    a = a-b;
+    a -= b;
 
     std::cout << "Получаем a=" << a << " и b=" << b << std::endl;
 
