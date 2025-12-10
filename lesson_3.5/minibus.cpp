@@ -10,6 +10,10 @@ int main() {
     int passengersGoOut = 0;
     int income = 0;
 
+    std:: string firstStop = "'Улица программистов'";
+    std:: string secondStop = "'Проспект алгоритмов'";
+    std:: string thirdStop = "'Аллея переменных'";
+    std:: string fourthStop = "'Массивы строк'";
 
     std::cout << "======================================" << std::endl;
     std::cout << "|                                    |" << std::endl;
@@ -19,7 +23,7 @@ int main() {
 
     // Первая остановка
 
-    std::cout << "Прибываем на остановку 'Улица программистов'. В салоне пассажиров: ";
+    std::cout << "Прибываем на остановку" << firstStop << ". В салоне пассажиров: ";
     std::cout << passengersNumer << std::endl;
     std::cout << "Сколько пассажиров вышло на остановке? ";
     std::cin >> passengersGoOut;
@@ -29,13 +33,13 @@ int main() {
     income += ticketPrice * passengersComeIn;
     passengersNumer += (passengersComeIn - passengersGoOut);
 
-    std::cout << "Отправляемся с остановки 'Улица программистов'. В салоне пассажиров: ";
+    std::cout << "Отправляемся с остановки " << firstStop << ". В салоне пассажиров: ";
     std::cout << passengersNumer << std::endl;
     std::cout << "---------Едем---------" << std::endl;
 
     //Вторая остановка
 
-    std::cout << "Прибываем на остановку 'Проспект алгоритмов'. В салоне пассажиров: ";
+    std::cout << "Прибываем на остановку " << secondStop << ". В салоне пассажиров: ";
     std::cout << passengersNumer << std::endl;
     std::cout << "Сколько пассажиров вышло на остановке? ";
     std::cin >> passengersGoOut;
@@ -45,13 +49,13 @@ int main() {
     income += ticketPrice * passengersComeIn;
     passengersNumer += (passengersComeIn - passengersGoOut);
 
-    std::cout << "Отправляемся с остановки 'Проспект алгоритмов'. В салоне пассажиров: ";
+    std::cout << "Отправляемся с остановки " << secondStop << ". В салоне пассажиров: ";
     std::cout << passengersNumer << std::endl;
     std::cout << "---------Едем---------" << std::endl;
 
     //Третья остановка
 
-    std::cout << "Прибываем на остановку 'Аллея переменных'. В салоне пассажиров: ";
+    std::cout << "Прибываем на остановку " << thirdStop << ". В салоне пассажиров: ";
     std::cout << passengersNumer << std::endl;
     std::cout << "Сколько пассажиров вышло на остановке? ";
     std::cin >> passengersGoOut;
@@ -61,13 +65,13 @@ int main() {
     income += ticketPrice * passengersComeIn;
     passengersNumer += (passengersComeIn - passengersGoOut);
 
-    std::cout << "Отправляемся с остановки 'Аллея переменных'. В салоне пассажиров: ";
+    std::cout << "Отправляемся с остановки " << thirdStop << ". В салоне пассажиров: ";
     std::cout << passengersNumer << std::endl;
     std::cout << "---------Едем---------" << std::endl;
 
     //Четвертая остановка
 
-    std::cout << "Прибываем на остановку 'Массивы строк'. В салоне пассажиров: ";
+    std::cout << "Прибываем на остановку " << fourthStop << ". В салоне пассажиров: ";
     std::cout << passengersNumer << std::endl;
     std::cout << "Сколько пассажиров вышло на остановке? ";
     std::cin >> passengersGoOut;
@@ -77,7 +81,7 @@ int main() {
     income += ticketPrice * passengersComeIn;
     passengersNumer += (passengersComeIn - passengersGoOut);
 
-    std::cout << "Отправляемся с остановки 'Массивы строк'. В салоне пассажиров: ";
+    std::cout << "Отправляемся с остановки " << fourthStop << ". В салоне пассажиров: ";
     std::cout << passengersNumer << std::endl;
     std::cout << "---------Едем на конечную---------" << std::endl;
     std::cout << std::endl;
