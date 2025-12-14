@@ -10,7 +10,7 @@ int main() {
 	std::cout << "------------ Проверяем ------------" << std::endl;
   
 	if (day > 0 && day <=31) {
-		if (day <=5 || (day >=8 && day <= 10) || (day + 1) % 7 == 0 || day % 7 == 0) {
+		if (day <=5 || (day >=8 && day <= 10) || (day++) % 7 == 0 || day % 7 == 0) {
 			std::cout << "Выходной день!" << std::endl;
 		} else {
 			std::cout << "Рабочий день!" << std::endl;
