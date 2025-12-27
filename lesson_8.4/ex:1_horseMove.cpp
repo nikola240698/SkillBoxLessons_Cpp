@@ -11,6 +11,9 @@ int main () {
 
     float startX, startY, moveX, moveY;
 
+    cout << "Программа для опеределения влзможности совершить ход конем" << endl;
+    cout << "в выбранную вами позицию на поле 0.8х0.8 см" << endl << endl;
+
     while (true) {
         cout << "Введите координаты расположения фигуры: ";
         cin >> startX >> startY;
