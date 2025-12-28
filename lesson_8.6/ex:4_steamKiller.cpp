@@ -10,6 +10,8 @@ int main () {
     SetConsoleOutputCP(CP_UTF8);
 
     float fileSize, downloadSpeed;
+
+    cout << "Программа для отображения процесса скачивания файлов обновления" << endl << endl;
     
     // вводим данные
     while (true) {
