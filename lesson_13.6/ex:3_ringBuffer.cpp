@@ -2,11 +2,14 @@
 #include <limits>
 #include <vector>
 
-#define BUFFER_SIZE (20)
+#define BUFFER_SIZE (10)
 
 void addToBuffer(std::vector<int> &vec, const int &value, int pos) {
     if (pos > BUFFER_SIZE - 1) {
-        pos = (pos % BUFFER_SIZE);
+        pos = (BUFFER_SIZE - 1);
+        for (int i = 0; i < BUFFER_SIZE - 1; i++) {
+            vec[i] = vec[i + 1];
+        }
     }
     vec[pos] = value;
 }
