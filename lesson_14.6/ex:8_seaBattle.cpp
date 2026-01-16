@@ -53,12 +53,12 @@ void createField(auto arr[][10], auto value) {
 }
 
 // функция размещения одиночного корабля с проверкой на занятое место
-bool placeShip(bool field[][10],int x, int y) {    
+bool placeShip(bool field[][10],int x, int y) {
     if (!field[x][y]) {
-        field[x][y] = true;        
+        field[x][y] = true;
         return true;
     }
-    std::cout << "Place is taken" << std::endl;
+    std::cout << "Place is taken!" << std::endl;
     return false;
 }
 
@@ -80,31 +80,48 @@ void placeBigShip(bool field[][10], char map[][10],const int &size) {
         if (coordX[0] == coordY[0] && abs(coordX[1] - coordY[1]) == (size - 1)) {
             // в случае вода координат корабля наоборот
             coordX[1] = (coordY[1] > coordX[1]) ? coordX[1] : coordY[1];
-            for (int i = 0; i < size;) {
-                if (placeShip(field, coordX[0], coordX[1] + i)) {
-                    map[coordX[0]][coordX[1] + i] = (char) (48 + size);
-                    i++;
-                } else {
-                    return;
-                }
+
+            // проверяем, что вводимые поля свободны
+            bool free = true;
+            for (int i = 0; i < size; i++) {
+                if (field[coordX[0]][coordX[1] + i])
+                    free = false;
             }
-            count++;
-            // если корабль ввели горизонтально
+            if (!free) {
+                std::cout << "The place is taken" << std::endl;
+                continue;
+            }
+            // расставляем корабли
+            for (int i = 0; i < size; i++) {
+                placeShip(field, coordX[0], coordX[1] + i);
+                map[coordX[0]][coordX[1] + i] = (char) (48 + size);
+            }
+
+        // если корабль ввели горизонтально
         } else if (coordX[1] == coordY[1] && abs(coordX[0] - coordY[0]) == (size - 1)) {
             // в случае вода координат корабля наоборот
             coordX[0] = (coordY[0] > coordX[0]) ? coordX[0] : coordY[0];
-            for (int i = 0; i < size;) {
-                if (placeShip(field, coordX[0] + i, coordX[1])) {
-                    map[coordX[0] + i][coordX[1]] = (char) (48 + size);
-                    i++;
-                } else {
-                    return;
-                }
+            // проверяем, что вводимые поля свободны
+            bool free = true;
+            for (int i = 0; i < size; i++) {
+                if (field[coordX[0] + i][coordX[1]])
+                    free = false;
             }
-            count++;
+            if (!free) {
+                std::cout << "The place is taken" << std::endl;
+                continue;
+            }
+            // расставляем корабли
+            for (int i = 0; i < size; i++) {
+                placeShip(field, coordX[0] + i, coordX[1]);
+                map[coordX[0] + i][coordX[1]] = (char) (48 + size);
+            }
+
         } else {
             std::cout << "Incorrect ship coordinates" << std::endl;
+            continue;
         }
+        count++;
     }
 }
 
@@ -126,9 +143,11 @@ void shipArrangement(bool field[][10], char map[][10]) {
     // размещаем двойной корабль
     std::cout << "Input coordinates double ship:" << std::endl;
     placeBigShip(field, map, 2);
+
     // размещаем тройной корабль
     std::cout << "Input coordinates triple ship:" << std::endl;
     placeBigShip(field, map, 3);
+
     // размещаем четверной корабль
     std::cout << "Input coordinates quadruple ship:" << std::endl;
     placeBigShip(field, map, 4);
@@ -157,6 +176,13 @@ bool shot(bool field[][10], char map[][10], const int target[2], int &life) {
 
 int main() {
 
+    std::cout << "======== Playing sea battle! ======== " << std::endl;
+    std::cout << "Try yourself in the role of captain of a naval armada" << std::endl;
+    std::cout << "P.S. All coordinates are entered separated by spaces," << std::endl;
+    std::cout << "in the range from 0 to 9, for example: 2 5" << std::endl;
+    std::cout << "Let's get started!" << std::endl;
+    std::cout << std::endl;
+
     // массивы полей размещения корабля
     bool field_1[10][10];
     bool field_2[10][10];
@@ -172,14 +198,12 @@ int main() {
 
     // расставляем корабли
     // первый игрок
-    std::cout << "Player 1. Input the coordinates of your ships" << std::endl;
+    std::cout << "Player 1. Input the coordinates of your ships " << std::endl;
     shipArrangement(field_1, shipMap_1);
     // второй игрок
     std::cout << "Player 2. Input the coordinates of your ships" << std::endl;
     shipArrangement(field_2, shipMap_2);
 
-    // отображаем карту
-    showArr(shipMap_1, shipMap_2);
     // начинаем бой
     // счетчик жизни кораблей
     int shipLife_1 = 20;
@@ -188,6 +212,8 @@ int main() {
     int target[2];
     // ход игрока
     bool player1 = true;
+
+    std::cout << "Let's start the battle!" <<std::endl;
     while (true) {
         if (shipLife_1 == 0 || shipLife_2 == 0) {
             break;
@@ -214,8 +240,8 @@ int main() {
             player1 = true;
         }
     }
-    
+
     std::cout << "Player " << (player1 ? 1 : 2) << " win!" << std::endl;
-    
+
     return 0;
 }
