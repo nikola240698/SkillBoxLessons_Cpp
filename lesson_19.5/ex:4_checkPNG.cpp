@@ -4,12 +4,16 @@
 
 bool check_Extension(const std::string &str) {
 
-    std::string extension = str.substr(str.length() - 4);
+    if (str.length() > 5) {
+        std::string extension = str.substr(str.length() - 4);
 
-    if (extension == ".png" || extension == ".PNG") {
-        return true;
+        if (extension == ".png" || extension == ".PNG") {
+            return true;
+        }
+    } else {
+        std::cout << "Invalid path of the file." << std::endl;
     }
-  
+
     return false;
 }
 
@@ -37,7 +41,7 @@ int main() {
     std::cout << "-> ";
     std::cin >> path;
 
-    if (path.size() < 5 || check_Extension(path)) {
+    if (check_Extension(path)) {
         std::ifstream extension;
 
         extension.open(path, std::ios::binary);
