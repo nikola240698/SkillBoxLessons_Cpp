@@ -42,7 +42,6 @@ bool createPair(const std::string &str, std::pair<std::string, std::string> &p) 
 }
 
 bool parsingStr(const std::string &str, std::pair<std::string, std::string> &p) {
-
     // проверяем, что записан только номер и фамилия через пробел
     bool space = false;
     bool error = false;
@@ -76,41 +75,52 @@ bool parsingStr(const std::string &str, std::pair<std::string, std::string> &p) 
         return true;
     }
     return false;
-
 }
 
 // вставка новой записи с проверкой имеющейся по ключу
-void findInsert(std::map<std::string, std::string> &map, std::pair<std::string, std::string> &p) {
-
+void findInsert(std::map<std::string, std::string> &map, std::multimap<std::string, std::string> &mapMult,
+        std::pair<std::string, std::string> &p) {
     // Проверяем, если есть такой номер уже в справочнике
-    std::map<std::string, std::string>::iterator it = map.begin();
-    for (; it != map.end(); ++it) {
+    if (map.contains(p.first)) {
         // если есть совпадение, то добавляем при согласии
-        if (p.first == it->first) {
-            while (true) {
-                std::cout << "This number is already taken by another subscriber" << std::endl;
-                std::cout << "Would you like to replace it (y/n)?" << std::endl;
-                std::cout << "-> ";
-                std::string answ;
-                std::getline(std::cin, answ);
-                // при согласии на замену
-                if (answ == "y") {
-                    // используем [] для точной замены значения по ключу
-                    map[p.first] = p.second;
-                    std::cout << "The entry has been added to the book" << std::endl;
-                    return;
+        while (true) {
+            std::cout << "This number is already taken by another subscriber" << std::endl;
+            std::cout << "Would you like to replace it (y/n)?" << std::endl;
+            std::cout << "-> ";
+            std::string answ;
+            std::getline(std::cin, answ);
+            // при согласии на замену
+            if (answ == "y") {
+                // находим диапазон итераторов по данным ключа для multimap
+                auto range = mapMult.equal_range(map.at(p.first));                
+                // удаляем ключ при совпадении 
+                for (auto it = range.first; ; ++it) {
+                    if (it->second == p.first) {
+                        mapMult.erase(it);
+                        break;
+                    }
+                    if (it == range.second) {
+                        break;
+                    }
                 }
-                if ( answ == "n") {
-                    // если отказался - выходим просто
-                    return;
-                }
-                // в случае ввода других символов
-                std::cout << "Incorrect answer!" << std::endl;
+                mapMult.insert(std::pair<std::string, std::string>(p.second, p.first));
+                // используем [] для точной замены значения по ключу в map
+                map[p.first] = p.second;
+                std::cout << "The entry has been added to the book" << std::endl;
+                return;
             }
+            if ( answ == "n") {
+                // если отказался - выходим просто
+                return;
+            }
+            // в случае ввода других символов
+            std::cout << "Incorrect answer!" << std::endl;
         }
     }
     // если нет совпадения, то просто вставляем новую запись
     map.insert(p);
+    mapMult.insert(std::pair<std::string, std::string> {p.second, p.first});
+
     std::cout << "The entry has been added to the book" << std::endl;
 }
 
@@ -123,8 +133,13 @@ int main() {
     std::cout << "##-##-## LastName (# is a digit)" << std::endl;
     std::cout << "To search, simply enter the number or last name" << std::endl;
 
-    std::string str;
+    // объявляем словари
     std::map<std::string, std::string> phoneDict;
+    // multimap для словаря с ключом по фамилиям
+    std::multimap<std::string, std::string> phoneDictMult;
+
+    std::string str;
+
 
     // бесконечный цикл ввода запроса
     while (true) {
@@ -139,16 +154,16 @@ int main() {
         if (parsingStr(str, p)) {
             if (p.first == "") {
                 // поиск по фамилии
-                std::map<std::string, std::string>::iterator it = phoneDict.begin();
-                bool match = false;
-                for (; it != phoneDict.end(); ++it) {
-                    if (it->second == p.second) {
-                        std::cout << it-> first << " ";
-                        match = true;
+                if (phoneDictMult.contains(p.second)) {
+                    // находим диапазон итераторов по данным ключа
+                    auto range = phoneDictMult.equal_range(p.second);
+                    // выводим все значения по диапазону итераторов
+                    for (auto it = range.first; it != range.second; ++it) {
+                        std::cout << it->second << " ";
                     }
-                }
-                std::cout << std::endl;
-                if (!match) {
+                    std::cout << std::endl;
+                } else {
+                    // если нет совпадений
                     std::cout << "No match found" << std::endl;
                 }
             } else if (p.second == "") {
@@ -160,7 +175,7 @@ int main() {
                 }
             } else {
                 //добавление в справочник записи
-                findInsert(phoneDict, p);
+                findInsert(phoneDict, phoneDictMult, p);
             }
         } else {
             std::cout << "Incorrect command" << std::endl;
