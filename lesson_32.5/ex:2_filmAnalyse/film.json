@@ -1,0 +1,71 @@
+{
+  "Interstellar": {
+    "country": ["United States", "United Kingdom"],
+    "release_date": "2014-11-07",
+    "studio": ["Legendary Pictures", "Syncopy", "Lynda Obst Productions"],
+    "screenwriter": ["Jonathan Nolan", "Christopher Nolan"],
+    "director": ["Christopher Nolan"],
+    "producer": ["Emma Thomas", "Christopher Nolan", "Lynda Obst"],
+    "main_characters": [
+      { "character": "Cooper", "actor": "Matthew McConaughey" },
+      { "character": "Brand", "actor": "Anne Hathaway" },
+      { "character": "Murph", "actor": "Jessica Chastain" }
+    ]
+  },
+
+  "Titanic": {
+    "country": ["United States"],
+    "release_date": "1997-12-19",
+    "studio": ["20th Century Fox", "Paramount Pictures", "Lightstorm Entertainment"],
+    "screenwriter": ["James Cameron"],
+    "director": ["James Cameron"],
+    "producer": ["James Cameron", "Jon Landau"],
+    "main_characters": [
+      { "character": "Jack Dawson", "actor": "Leonardo DiCaprio" },
+      { "character": "Rose DeWitt Bukater", "actor": "Kate Winslet" },
+      { "character": "Cal Hockley", "actor": "Billy Zane" }
+    ]
+  },
+
+  "The Matrix": {
+    "country": ["United States", "Australia"],
+    "release_date": "1999-03-31",
+    "studio": ["Warner Bros.", "Village Roadshow Pictures", "Silver Pictures"],
+    "screenwriter": ["Lana Wachowski", "Lilly Wachowski"],
+    "director": ["Lana Wachowski", "Lilly Wachowski"],
+    "producer": ["Joel Silver"],
+    "main_characters": [
+      { "character": "Neo", "actor": "Keanu Reeves" },
+      { "character": "Morpheus", "actor": "Laurence Fishburne" },
+      { "character": "Trinity", "actor": "Carrie-Anne Moss" }
+    ]
+  },
+
+  "Avatar": {
+    "country": ["United States"],
+    "release_date": "2009-12-18",
+    "studio": ["20th Century Fox", "Lightstorm Entertainment"],
+    "screenwriter": ["James Cameron"],
+    "director": ["James Cameron"],
+    "producer": ["James Cameron", "Jon Landau"],
+    "main_characters": [
+      { "character": "Jake Sully", "actor": "Sam Worthington" },
+      { "character": "Neytiri", "actor": "Zoe Saldana" },
+      { "character": "Dr. Grace Augustine", "actor": "Sigourney Weaver" }
+    ]
+  },
+
+  "Harry Potter and the Philosopher's Stone": {
+    "country": ["United Kingdom", "United States"],
+    "release_date": "2001-11-16",
+    "studio": ["Warner Bros.", "Heyday Films"],
+    "screenwriter": ["Steve Kloves"],
+    "director": ["Chris Columbus"],
+    "producer": ["David Heyman"],
+    "main_characters": [
+      { "character": "Harry Potter", "actor": "Daniel Radcliffe" },
+      { "character": "Hermione Granger", "actor": "Emma Watson" },
+      { "character": "Ron Weasley", "actor": "Rupert Grint" }
+    ]
+  }
+}
