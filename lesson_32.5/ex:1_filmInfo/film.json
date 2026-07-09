@@ -1,0 +1,51 @@
+{
+  "title": "The Matrix",
+  "year": 1999,
+  "country": [
+    "United States",
+    "Australia"
+  ],
+  "release_date": "1999-03-31",
+  "studio": [
+    "Warner Bros.",
+    "Village Roadshow Pictures",
+    "Silver Pictures"
+  ],
+  "screenwriter": [
+    "Lana Wachowski",
+    "Lilly Wachowski"
+  ],
+  "director": [
+    "Lana Wachowski",
+    "Lilly Wachowski"
+  ],
+  "producer": [
+    "Joel Silver"
+  ],
+  "main_characters": [
+    {
+      "character": "Neo (Thomas Anderson)",
+      "actor": "Keanu Reeves"
+    },
+    {
+      "character": "Morpheus",
+      "actor": "Laurence Fishburne"
+    },
+    {
+      "character": "Trinity",
+      "actor": "Carrie-Anne Moss"
+    },
+    {
+      "character": "Agent Smith",
+      "actor": "Hugo Weaving"
+    },
+    {
+      "character": "Cypher",
+      "actor": "Joe Pantoliano"
+    },
+    {
+      "character": "Oracle",
+      "actor": "Gloria Foster"
+    }
+  ]
+}
