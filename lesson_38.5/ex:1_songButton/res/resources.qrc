@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/media/song">
+        <file>click.wav</file>
+    </qresource>
+    <qresource prefix="/media/img">
+        <file>non_pressed.png</file>
+        <file>pressed.png</file>
+    </qresource>
+</RCC>
